@@ -1,6 +1,6 @@
 const users = [    
-    { login: 'Mark', password: '1', type: 'VIP', sale: 15 },
-    { login: 'Pol', password: '2', type: 'public', sale: 5 }
+    { login: 'Mark', password: 'm', type: 'VIP', sale: 15 },
+    { login: 'Pol', password: 'p', type: 'public', sale: 5 }
 ];
             
 const products = [
@@ -25,9 +25,13 @@ const appState = {
 function verifyUser(login, password, users){
     console.log(login, password, users);
 
-    for (let i = 0; i < users.lenght; i++){
+    for (let i = 0; i < users.length; i++){
         let user = users[i];
+
+        console.log(login, password, user);
+
         if (user.login == login && user.password == password){
+            console.log('v->', user);
             return user;
         }
     }
@@ -50,6 +54,8 @@ function initApp() {
         let userPassword = prompt('insert password')
 
         let foundUser = verifyUser(userLogin, userPassword, users)
+
+        console.log('-> ', foundUser);
 
         if (foundUser !== null){
             appState.currentUser = foundUser
